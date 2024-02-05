@@ -256,6 +256,120 @@ class JogadorResource(Resource):
         except Exception as err:
             return {"message": err}
 
+class CriaJogadores(Resource):
+    def get(self):
+        jogador1 = {
+            "nome": "Ronaldinho Gaúcho",
+            "altura": 1.81,
+            "ano_nascimento": 1980,
+            "posicao": "meia",
+            "peso": "80.5",
+            "numero_camisa": 11,
+            "perna_preferida": "Ambidestro",
+            "jogos_disputados": 5,
+            "gols_marcados": 2,
+            "assistencias": 3,
+            "imagem": "https://alemdoplacar.files.wordpress.com/2011/05/pit5.jpeg"
+            }
+        
+        jogador2 = {
+            "nome": "Marcos",
+            "altura": 1.88,
+            "ano_nascimento": 1973,
+            "posicao": "goleiro",
+            "peso": 88.0,
+            "numero_camisa": 1,
+            "perna_preferida": "Destro",
+            "jogos_disputados": 7,
+            "gols_marcados": 0,
+            "assistencias": 4,
+            "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-22110-ip9t48pkh8jv0a"
+            }
+        
+        jogador3 = {
+            "nome": "Cafu",
+            "altura": 1.76,
+            "ano_nascimento": 1970,
+            "posicao": "lateral_direito",
+            "peso": 72.0,
+            "numero_camisa": 2,
+            "perna_preferida": "Destro",
+            "jogos_disputados": 7,
+            "gols_marcados": 0,
+            "assistencias": 1,
+            "imagem": "https://conteudo.imguol.com.br/2012/03/27/cafu-levanta-a-copa-do-mundo-pela-selecao-brasileira-em-2002-1332902990448_450x600.jpg"
+            }
+        
+        jogador4 = {
+            "nome": "Lucio",
+            "altura": 1.88,
+            "ano_nascimento": 1978,
+            "posicao": "zagueiro",
+            "peso": 84.0,
+            "numero_camisa": 3,
+            "perna_preferida": "Destro",
+            "jogos_disputados": 7,
+            "gols_marcados": 1,
+            "assistencias": 0,
+            "imagem": "https://i.pinimg.com/736x/ee/0e/89/ee0e89f31d6bb6fcd730f07758faf903.jpg"
+            }
+        
+        session = Session()
+        session.add(Jogador(**jogador1))
+        session.add(Jogador(**jogador2))
+        session.add(Jogador(**jogador3))
+        session.add(Jogador(**jogador4))
+
+        session.commit()
+
+        return {"message": "Jogadores criados na base"}
+    
+class CriaEstadios(Resource):
+    def get(self): 
+        estadio2 = {
+            "nome": "Estádio Internacional de Yokohama",
+            "cidade": "Yokohama",
+            "capacidade": 72000,
+            "inauguracao": 1998,
+            "imagem": "https://miro.medium.com/v2/resize:fit:3000/1*Y3_0mVDGp-p2RRFalkXfkg.jpeg"
+            }
+        
+        estadio3 = {
+            "nome": "Estádio de Suwon",
+            "cidade": "Suwon",
+            "capacidade": 43830,
+            "inauguracao": 2001,
+            "imagem": "https://i.pinimg.com/originals/d2/8c/1e/d28c1e823127c7225c3c24d96f98ae55.jpg"
+            }
+        
+        estadio4 = {
+            "nome": "Estádio de Incheon",
+            "cidade": "Incheon",
+            "capacidade": 52500,
+            "inauguracao": 2001,
+            "imagem": "https://i.pinimg.com/originals/bf/98/d6/bf98d67b79529ab869e3f95adad9cdae.jpg"
+            }
+        
+        estadio5 = {
+            "nome": "Estádio de Seogwipo",
+            "cidade": "Seogwipo",
+            "capacidade": 42477,
+            "inauguracao": 2001,
+            "imagem": "https://trivela.com.br/wp-content/uploads/2014/05/Copa-2002_Est%C3%A1dio-Jeju.jpg"
+        }
+        
+        session = Session()
+        session.add(Estadio(**estadio2))
+        session.add(Estadio(**estadio3))
+        session.add(Estadio(**estadio4))
+        session.add(Estadio(**estadio5))
+
+        session.commit()
+
+        return {"message": "Estadios criados na base"}
+
 api.add_resource(HomeResource, '/')
 api.add_resource(JogadorResource, '/jogador/<string:nome>')
 api.add_resource(JogadoresResource, '/jogador')
+api.add_resource(CriaJogadores, '/cria_jogadores')
+api.add_resource(CriaEstadios, '/cria_estadios')
