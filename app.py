@@ -10,8 +10,7 @@ CORS(app)
 api = Api(app)
 
 swagger_config = {
-    "headers": [
-    ],
+    "headers": [],
     "specs": [
         {
             "endpoint": 'apispec_1',
@@ -38,9 +37,86 @@ class HomeResource(Resource):
             - nome: Bem-vindo!
         responses:
             200:
-                descripton: Uma mensagem de boas vindas
+                description: Uma mensagem de boas vindas
         """
         return {"message": "Bem-vindo a pagina da documentação"}
+
+class JogadoresResource(Resource):
+    def post(self):
+        """
+        Rota para fazer o post de um jogador através de seu nome.
+        
+        ---
+        tags:
+            - Jogador
+        parameters:
+            - name: nome
+              in: formData
+              type: string
+              required: true
+              description: Nome do jogador
+            - name: altura
+              in: formData
+              type: float
+              required: true
+              description: Altura do jogador.
+            - name: ano_nascimento
+              in: formData
+              type: integer
+              required: true
+              description: Ano de nascimento do jogador.
+            - name: posicao
+              in: formData
+              type: string
+              required: true
+              description: Posição do jogador.
+            - name: peso
+              in: formData
+              type: float
+              required: true
+              description: Peso do jogador.
+            - name: numero_camisa
+              in: formData
+              type: integer
+              required: true
+              description: Número da camisa do jogador.
+            - name: perna_preferida
+              in: formData
+              type: string
+              required: true
+              description: Perna preferida do jogador.
+            - name: jogos_disputados
+              in: formData
+              type: integer
+              required: true
+              description: Número de jogos disputados pelo jogador.
+            - name: gols_marcados
+              in: formData
+              type: integer
+              required: true
+              description: Número de gols marcados pelo jogador.
+            - name: assistencias
+              in: formData
+              type: integer
+              required: true
+              description: Número de assistências feitas pelo jogador.
+
+        responses:
+            200:
+                description: Jogador encontrado!
+            404:
+                description: Jogador não encontrado na base.
+        """
+        try:
+            json_data = request.form
+            session = Session()
+            novo_jogador_data = jogador_schema.dump(json_data)
+            novo_jogador = Jogador(**novo_jogador_data)
+            session.add(novo_jogador)
+            session.commit()
+            return jogador_schema.dump(novo_jogador_data)
+        except Exception as err:
+            return {"message": err}
 
 class JogadorResource(Resource):
     def get(self, nome):
@@ -114,9 +190,57 @@ class JogadorResource(Resource):
               type: string
               required: true
               description: Nome do jogador
+            - name: altura
+              in: formData
+              type: float
+              required: false
+              description: Altura do jogador.
+            - name: ano_nascimento
+              in: formData
+              type: integer
+              required: false
+              description: Ano de nascimento do jogador.
+            - name: posicao
+              in: formData
+              type: string
+              required: false
+              description: Posição do jogador.
+            - name: peso
+              in: formData
+              type: float
+              required: false
+              description: Peso do jogador.
+            - name: numero_camisa
+              in: formData
+              type: integer
+              required: false
+              description: Número da camisa do jogador.
+            - name: perna_preferida
+              in: formData
+              type: string
+              required: false
+              description: Perna preferida do jogador.
+            - name: jogos_disputados
+              in: formData
+              type: integer
+              required: false
+              description: Número de jogos disputados pelo jogador.
+            - name: gols_marcados
+              in: formData
+              type: integer
+              required: false
+              description: Número de gols marcados pelo jogador.
+            - name: assistencias
+              in: formData
+              type: integer
+              required: false
+              description: Número de assistências feitas pelo jogador.
+
         responses:
             200:
                 description: Jogador encontrado!
+            404:
+                description: Jogador não encontrado na base.
         """
         try:
             session = Session()
@@ -132,7 +256,6 @@ class JogadorResource(Resource):
         except Exception as err:
             return {"message": err}
 
-    
 api.add_resource(HomeResource, '/')
 api.add_resource(JogadorResource, '/jogador/<string:nome>')
-
+api.add_resource(JogadoresResource, '/jogador')
