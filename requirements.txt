@@ -2,3 +2,5 @@ flask
 flask-restful
 sqlalchemy
 marshmallow
+db-sqlite3
+SQLAlchemy-Utils
