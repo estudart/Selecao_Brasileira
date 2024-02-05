@@ -4,3 +4,6 @@ sqlalchemy
 marshmallow
 db-sqlite3
 SQLAlchemy-Utils
+flasgger
+Flask-Cors
+python-dotenv

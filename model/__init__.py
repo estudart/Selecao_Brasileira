@@ -1,7 +1,7 @@
-from base import Base
-from estadio import Estadio
-from jogador import Jogador
-from tecnico import Tecnico
+from model.base import Base
+from model.estadio import Estadio
+from model.jogador import Jogador
+from model.tecnico import Tecnico
 
 import sqlite3
 

@@ -1,3 +1,3 @@
-from estadio import estadio_schema, estadios_schema
-from jogador import jogador_schema, jogadores_schema
-from tecnico import tecnico_schema
+from schemas.estadio import estadio_schema, estadios_schema
+from schemas.jogador import jogador_schema, jogadores_schema
+from schemas.tecnico import tecnico_schema
