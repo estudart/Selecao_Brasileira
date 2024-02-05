@@ -15,3 +15,4 @@ class Jogador(Base):
     jogos_disputados = Column(Integer)
     gols_marcados = Column(Integer)
     assistencias = Column(Integer)
+    imagem = Column(String)

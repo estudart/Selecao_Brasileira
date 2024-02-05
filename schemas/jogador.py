@@ -12,6 +12,7 @@ class JogadorSchema(Schema):
     jogos_disputados = fields.Int()
     gols_marcados = fields.Int()
     assistencias = fields.Int()
+    imagem = fields.Str()
 
 jogador_schema = JogadorSchema()
 jogadores_schema = JogadorSchema(many=True)
