@@ -6,3 +6,6 @@ class EstadioSchema(Schema):
     cidade = fields.Str()
     capacidade = fields.Int()
     inauguracao = fields.Int()
+
+estadio_schema = EstadioSchema()
+estadios_schema = EstadioSchema(many=True)
