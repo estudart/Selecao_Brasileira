@@ -42,6 +42,24 @@ class HomeResource(Resource):
         return {"message": "Bem-vindo a pagina da documentação"}
 
 class JogadoresResource(Resource):
+    def get(self):
+        """
+        Rota para fazer o post de um estadio através de seu nome.
+        
+        ---
+        tags:
+          - Jogador
+        responses:
+          200:
+            description: Estadio encontrado!
+          404:
+            description: Estadio não encontrado na base.
+        """
+        session = Session()
+        jogadores_data = session.query(Jogador).all()
+        json_response = jogadores_schema.dump(jogadores_data)
+        return json_response
+    
     def post(self):
         """
         Rota para fazer o post de um jogador através de seu nome.
@@ -274,14 +292,16 @@ class JogadorResource(Resource):
 class EstadiosResource(Resource):
     def get(self):
         """
-        Rota para fazer o request de todos os estadios na base
-
+        Rota para fazer o post de um estadio através de seu nome.
+        
         ---
         tags:
-            - Estadio
+          - Estadio
         responses:
-            200:
-                Estadio encontrados com sucesso
+          200:
+            description: Estadio encontrado!
+          404:
+            description: Estadio não encontrado na base.
         """
         session = Session()
         estadios_data = session.query(Estadio).all()
@@ -297,7 +317,7 @@ class EstadiosResource(Resource):
             - Estadio
         parameters:
             - name: nome
-              in: path
+              in: formData
               type: string
               required: true
               description: Nome do estadio
@@ -587,4 +607,6 @@ api.add_resource(HomeResource, '/')
 api.add_resource(JogadorResource, '/jogador/<string:nome>')
 api.add_resource(JogadoresResource, '/jogador')
 api.add_resource(CriaJogadores, '/cria_jogadores')
+api.add_resource(EstadioResource, '/estadio/<string:nome>')
+api.add_resource(EstadiosResource, '/estadios')
 api.add_resource(CriaEstadios, '/cria_estadios')
