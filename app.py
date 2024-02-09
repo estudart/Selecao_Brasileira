@@ -476,6 +476,7 @@ class CriaJogadores(Resource):
             "jogos_disputados": 5,
             "gols_marcados": 2,
             "assistencias": 3,
+            "descricao": "Esse jogador...",
             "imagem": "https://alemdoplacar.files.wordpress.com/2011/05/pit5.jpeg"
             }
         
@@ -490,6 +491,7 @@ class CriaJogadores(Resource):
             "jogos_disputados": 7,
             "gols_marcados": 0,
             "assistencias": 4,
+            "descricao": "Esse jogador...",
             "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-22110-ip9t48pkh8jv0a"
             }
         
@@ -504,6 +506,7 @@ class CriaJogadores(Resource):
             "jogos_disputados": 7,
             "gols_marcados": 0,
             "assistencias": 1,
+            "descricao": "Esse jogador...",
             "imagem": "https://conteudo.imguol.com.br/2012/03/27/cafu-levanta-a-copa-do-mundo-pela-selecao-brasileira-em-2002-1332902990448_450x600.jpg"
             }
         
@@ -518,6 +521,7 @@ class CriaJogadores(Resource):
             "jogos_disputados": 7,
             "gols_marcados": 1,
             "assistencias": 0,
+            "descricao": "Esse jogador...",
             "imagem": "https://i.pinimg.com/736x/ee/0e/89/ee0e89f31d6bb6fcd730f07758faf903.jpg"
             }
         
@@ -538,6 +542,7 @@ class CriaEstadios(Resource):
             "cidade": "Yokohama",
             "capacidade": 72000,
             "inauguracao": 1998,
+            "descricao": "Esse estadio...",
             "imagem": "https://miro.medium.com/v2/resize:fit:3000/1*Y3_0mVDGp-p2RRFalkXfkg.jpeg"
             }
         
@@ -546,6 +551,7 @@ class CriaEstadios(Resource):
             "cidade": "Suwon",
             "capacidade": 43830,
             "inauguracao": 2001,
+            "descricao": "Esse estadio...",
             "imagem": "https://i.pinimg.com/originals/d2/8c/1e/d28c1e823127c7225c3c24d96f98ae55.jpg"
             }
         
@@ -554,6 +560,7 @@ class CriaEstadios(Resource):
             "cidade": "Incheon",
             "capacidade": 52500,
             "inauguracao": 2001,
+            "descricao": "Esse estadio...",
             "imagem": "https://i.pinimg.com/originals/bf/98/d6/bf98d67b79529ab869e3f95adad9cdae.jpg"
             }
         
@@ -562,6 +569,7 @@ class CriaEstadios(Resource):
             "cidade": "Seogwipo",
             "capacidade": 42477,
             "inauguracao": 2001,
+            "descricao": "Esse estadio...",
             "imagem": "https://trivela.com.br/wp-content/uploads/2014/05/Copa-2002_Est%C3%A1dio-Jeju.jpg"
         }
         
