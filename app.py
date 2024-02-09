@@ -272,6 +272,22 @@ class JogadorResource(Resource):
             return {"message": err}
 
 class EstadiosResource(Resource):
+    def get(self):
+        """
+        Rota para fazer o request de todos os estadios na base
+
+        ---
+        tags:
+            - Estadio
+        responses:
+            200:
+                Estadio encontrados com sucesso
+        """
+        session = Session()
+        estadios_data = session.query(Estadio).all()
+        json_response = estadios_schema.dump(estadios_data)
+        return json_response
+
     def post(self):
         """
         Rota para fazer o post de um estadio através de seu nome.
