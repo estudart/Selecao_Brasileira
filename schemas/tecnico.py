@@ -5,6 +5,7 @@ class TecnicoSchema(Schema):
     nome = fields.Str()
     altura = fields.Float()
     ano_nascimento = fields.Int()
+    descricao = fields.Str()
     imagem = fields.Str()
 
 tecnico_schema = TecnicoSchema()

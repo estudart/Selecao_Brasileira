@@ -6,6 +6,7 @@ class EstadioSchema(Schema):
     cidade = fields.Str()
     capacidade = fields.Int()
     inauguracao = fields.Int()
+    descricao = fields.Str()
     imagem = fields.Str()
 
 estadio_schema = EstadioSchema()

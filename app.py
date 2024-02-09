@@ -100,6 +100,16 @@ class JogadoresResource(Resource):
               type: integer
               required: true
               description: Número de assistências feitas pelo jogador.
+            - name: descricao
+              in: formData
+              type: string
+              required: true
+              description: Descricao do jogador.
+            - name: imagem
+              in: formData
+              type: string
+              required: false
+              description: Imagem do jogador.
 
         responses:
             200:
@@ -235,6 +245,11 @@ class JogadorResource(Resource):
               type: integer
               required: false
               description: Número de assistências feitas pelo jogador.
+            - name: descricao
+              in: formData
+              type: string
+              required: false
+              description: Descricao do jogador.
 
         responses:
             200:
@@ -255,6 +270,182 @@ class JogadorResource(Resource):
                 return jogador_schema.dump(jogador)
         except Exception as err:
             return {"message": err}
+
+class EstadiosResource(Resource):
+    def post(self):
+        """
+        Rota para fazer o post de um estadio através de seu nome.
+        
+        ---
+        tags:
+            - Estadio
+        parameters:
+            - name: nome
+              in: path
+              type: string
+              required: true
+              description: Nome do estadio
+            - name: cidade
+              in: formData
+              type: string
+              required: true
+              description: Cidade do estadio
+            - name: capacidade
+              in: formData
+              type: integer
+              required: true
+              description: Capacidade do estadio
+            - name: inauguracao
+              in: formData
+              type: integer
+              required: true
+              description: Data de inauguração do estadio
+            - name: descricao
+              in: formData
+              type: string
+              required: true
+              description: Descricao do estadio
+            - name: imagem
+              in: formData
+              type: string
+              required: true
+              description: Imagem do estadio.
+
+        responses:
+            200:
+                description: Estadio encontrado!
+            404:
+                description: Estadio não encontrado na base.
+        """
+        try:
+            json_data = request.form
+            session = Session()
+            novo_estadio_data = estadio_schema.dump(json_data)
+            novo_estadio = Estadio(**novo_estadio_data)
+            session.add(novo_estadio)
+            session.commit()
+            return estadio_schema.dump(novo_estadio_data)
+        except Exception as err:
+            return {"message": err}
+
+class EstadioResource(Resource):
+    def get(self, nome):
+        """
+        Rota para fazer o request de um estadio através de seu nome.
+        
+        ---
+        tags:
+            - Estadio
+        parameters:
+            - name: nome
+              in: path
+              type: string
+              required: true
+              description: Nome do estádio
+        responses:
+            200:
+                description: Jogador encontrado!
+        """
+        try:
+            session = Session()
+            estadio = session.query(Estadio).filter(Estadio.nome == nome).first()
+
+            if not estadio:
+                return {"message": "Estadio não encontrado na base"}
+            else:
+                return estadio_schema.dump(estadio)
+        except Exception as err:
+            return {"message": err}
+        
+    def delete(self, nome):
+        """
+        Rota para fazer o delete de um estadio através de seu nome.
+        
+        ---
+        tags:
+            - Estadio
+        parameters:
+            - name: nome
+              in: path
+              type: string
+              required: true
+              description: Nome do estadio
+        responses:
+            200:
+                description: Estadio encontrado!
+        """
+        try:
+            session = Session()
+            estadio = session.query(Estadio).filter(Estadio.nome == nome).first()
+
+            if not estadio:
+                return {"message": "Estadio não encontrado na base"}
+            else:
+                session.query(Estadio).filter(Estadio.nome == nome).delete()
+                session.commit()
+                return estadio_schema.dump(estadio)
+        except Exception as err:
+            return {"message": err}
+        
+    def put(self, nome):
+        """
+        Rota para fazer o put de um estadio através de seu nome.
+        
+        ---
+        tags:
+            - Estadio
+        parameters:
+            - name: nome
+              in: path
+              type: string
+              required: true
+              description: Nome do estadio
+            - name: cidade
+              in: formData
+              type: string
+              required: false
+              description: Cidade do estadio
+            - name: capacidade
+              in: formData
+              type: integer
+              required: false
+              description: Capacidade do estadio
+            - name: inauguracao
+              in: formData
+              type: integer
+              required: false
+              description: Data de inauguração do estadio
+            - name: descricao
+              in: formData
+              type: string
+              required: false
+              description: Descricao do estadio
+            - name: imagem
+              in: formData
+              type: string
+              required: false
+              description: Imagem do estadio.
+
+        responses:
+            200:
+                description: Estadio encontrado!
+            404:
+                description: Estadio não encontrado na base.
+        """
+        try:
+            session = Session()
+            estadio = session.query(Estadio).filter(Estadio.nome == nome).first()
+
+            if not estadio:
+                return {"message": "Estadio não encontrado na base"}
+            else:
+                for (chave, valor) in request.form.items():
+                    setattr(estadio, chave, valor)
+                session.commit()
+                return estadio_schema.dump(estadio)
+        except Exception as err:
+            return {"message": err}
+
 
 class CriaJogadores(Resource):
     def get(self):

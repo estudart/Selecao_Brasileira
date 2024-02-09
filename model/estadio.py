@@ -9,4 +9,5 @@ class Estadio(Base):
     cidade = Column(String)
     capacidade = Column(Integer)
     inauguracao = Column(Integer)
+    descricao = Column(String)
     imagem = Column(String)

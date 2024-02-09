@@ -9,4 +9,5 @@ class Tecnico(Base):
     nome = Column(String)
     altura = Column(Float)
     ano_nascimento = Column(Integer)
+    descricao = Column(String)
     imagem = Column(String)
