@@ -562,7 +562,7 @@ class CriaEstadios(Resource):
             "cidade": "Yokohama",
             "capacidade": 72000,
             "inauguracao": 1998,
-            "descricao": "Esse estadio...",
+            "descricao": "O Estádio Internacional de Yokohama é uma maravilha arquitetônica situada na cidade de Yokohama. Conhecido por sua grande capacidade, este estádio icônico já testemunhou inúmeros eventos esportivos e culturais de grande porte. Sua arquitetura moderna e instalações de última geração oferecem uma experiência inesquecível para os espectadores.",
             "imagem": "https://miro.medium.com/v2/resize:fit:3000/1*Y3_0mVDGp-p2RRFalkXfkg.jpeg"
             }
         
@@ -571,7 +571,7 @@ class CriaEstadios(Resource):
             "cidade": "Suwon",
             "capacidade": 43830,
             "inauguracao": 2001,
-            "descricao": "Esse estadio...",
+            "descricao": "O Estádio de Suwon é um dos principais locais esportivos da cidade de Suwon. Com uma capacidade generosa e instalações modernas, é um destino popular para eventos esportivos e culturais de grande escala. Sua localização estratégica e infraestrutura de classe mundial o tornam uma escolha ideal para sediar uma variedade de eventos.",
             "imagem": "https://i.pinimg.com/originals/d2/8c/1e/d28c1e823127c7225c3c24d96f98ae55.jpg"
             }
         
@@ -580,7 +580,7 @@ class CriaEstadios(Resource):
             "cidade": "Incheon",
             "capacidade": 52500,
             "inauguracao": 2001,
-            "descricao": "Esse estadio...",
+            "descricao": "O Estádio de Incheon é uma impressionante estrutura localizada na cidade de Incheon. Com sua grande capacidade e instalações modernas, o estádio é um ponto focal para uma variedade de eventos esportivos e de entretenimento. Sua localização privilegiada e ambiente acolhedor o tornam um destino popular para espectadores e artistas.",
             "imagem": "https://i.pinimg.com/originals/bf/98/d6/bf98d67b79529ab869e3f95adad9cdae.jpg"
             }
         
@@ -589,7 +589,7 @@ class CriaEstadios(Resource):
             "cidade": "Seogwipo",
             "capacidade": 42477,
             "inauguracao": 2001,
-            "descricao": "Esse estadio...",
+            "descricao": "O Estádio de Seogwipo, situado na cidade de Seogwipo, é um local de renome para eventos esportivos e culturais. Com sua atmosfera vibrante e instalações modernas, oferece uma experiência memorável para os espectadores. Sua localização pitoresca e ambiente energético o tornam um destino popular para pessoas de todas as idades.",
             "imagem": "https://trivela.com.br/wp-content/uploads/2014/05/Copa-2002_Est%C3%A1dio-Jeju.jpg"
         }
         
