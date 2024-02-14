@@ -486,7 +486,7 @@ class EstadioResource(Resource):
 class CriaJogadores(Resource):
     def get(self):
         jogador1 = {
-            "nome": "Ronaldinho Gaúcho",
+            "nome": "Ronaldinho",
             "altura": 1.81,
             "ano_nascimento": 1980,
             "posicao": "meia",
@@ -519,7 +519,7 @@ class CriaJogadores(Resource):
             "nome": "Cafu",
             "altura": 1.76,
             "ano_nascimento": 1970,
-            "posicao": "lateral_direito",
+            "posicao": "lateral direito",
             "peso": 72.0,
             "numero_camisa": 2,
             "perna_preferida": "Destro",
